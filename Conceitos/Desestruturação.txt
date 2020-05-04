@@ -1,0 +1,49 @@
+const usuario = {
+    nome: 'Yasmim',
+    idade: 16,
+    endereco: {
+       cidade: 'São Paulo',
+        estado: 'SP'
+    }
+}
+
+// Como podemos ver para pegar três valores tivemos que usar três linhas! O que podemos fazer é utilizar o conceito de desestruturação
+const nome = usuario.nome;
+const idade = usuario.idade;
+const cidade = usuario.endereco.cidade;
+
+
+// Ao invés disso podemos fazer desta maneira:
+const { nome, idade } = usuario; // Abrimos chaves e dentro delas passamos os nomes das propriedades que queremos, que recebe o nome do objeto.
+
+console.log(nome) // E assim temos as propriedades sepradas.
+console.log(idade)
+
+E se quisermos também pegar uma informação que está dentro de outro objeto podemos fazer assim:
+
+const { nome, idade, endereco: { cidade } } = usuario;
+
+
+// E podemos utlizar este conceito de varias formas:
+
+function mostrarNome(usuario){
+    console.log(usuario.nome);
+}
+
+mostrarNome(usuario)
+
+// Ao inves de fazermos assim, aqui tamb´em podemos usar o conceito de desetruturação
+
+function mostrarUsuario({ nome, idade}){
+    console.log(nome, idade);
+}
+
+mostrarUsuario(usuario)
+
+A desestruturação tambem serve para arrays:
+
+const num = [1, 2]
+
+const [ a, b ] = num;
+
+console.log(a, b)

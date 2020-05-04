@@ -1,0 +1,118 @@
+/**
+ * Antigamente não havia como nós fazermos classes em Javascript, mas hoje há e é bem simples.
+ */
+
+ class todoList { 
+     constructor(){ // Primeiro método que vai ser executado assim que instanciarmos um novo obejto apartir dessa classe.
+        this.todos = [];        // No constructor podemos criar ações que vão ser executadas assim que o obejto é criado, ou também iniciar uma variável por exemplo.
+     }
+
+     addTodo(){ // Podemos criar novos métodos 
+        this.todos.push('Novo todo')
+        console.log(this.todos)
+     }
+ }
+
+ const MinhaLista = new todoList(); // Instanciando o objeto apartir da Classe
+
+ document.getElementById('novotodo').onclick = function(){
+     MinhaLista.addTodo()
+ }
+
+
+========= Herança ==========
+
+ class List{ // Também temos a parte de herança, ou seja, podemos criar uma classe..
+     constructor(){
+         this.data = [];
+     }
+
+     add(data){
+         this.data.push(data);
+         console.log(this.data);
+     }
+ }
+
+ class todoList extends List { // ...E utlizar o extends para estender essa classe List na nossa TodoList
+
+ }
+
+ const MinhaLista = new todoList(); // Instanciando o objeto apartir da Classe
+
+ document.getElementById('novotodo').onclick = function(){
+     MinhaLista.add('Yasmim Linda')
+ }
+
+Podemos também chamar o constructor da classe pai para a classe filho, adicionar novos métodos, etc. Ex:
+
+/**
+ * Antigamente não havia como nós fazermos classes em Javascript, mas hoje há e é bem simples.
+ */
+
+ class List{ // Também temos a parte de herança, ou seja, podemos criar uma classe..
+     constructor(){
+         this.data = [];
+     }
+
+     add(data){
+         this.data.push(data);
+         console.log(this.data);
+     }
+ }
+
+ class todoList extends List { // ...E utlizar o extends para estender essa classe List na nossa TodoList
+    // Vamos supor que na nossa herança, na classe que herda as propriedades da nossa Lista a gente queira adicionar uma outra informação, nome de algum usuário por exemplo
+    constructor(){ //..quando definimamos o método constructor numa classe que herda outra classe, é muito bom chamarmos o método constructor da classe pai utilizando o super()
+        super(); // Chamando o método constructor da classe pai
+
+        this.usuario = 'Yasmim';
+    }
+
+    mostrarUsuario(){
+        console.log(this.usuario);
+    }
+ }
+
+ const MinhaLista = new todoList(); // Instanciando o objeto apartir da Classe
+
+ document.getElementById('novotodo').onclick = function(){
+     MinhaLista.add('Yasmim Perfeita')
+ }
+
+ MinhaLista.mostrarUsuario()
+
+
+============================================
+
+========= Métodos Estáticos ================
+
+// Podemos utlizar os métodos estáticos que não precimos dar um "new" na classe para chamar algum método dela
+
+class TodoList{
+    constructor(){
+        this.todos = [];
+    }
+
+     static addTodo(){ // Toda vez que passamos um método estático ele não enxerga o resto da classe. Então ele não está enxergando este vetor "todos". Então toda vez que utlizarmos esse método é para passarmos alguma informação pra ele e ele nos retornar uma outra informação.
+        this.todos.push('YasmiMarivilhosa')
+        console.log(this.todos)
+    }
+}
+
+// Por isso que quando temos uma classe estática nem precisamos passar o constructor(), basicamente ele é para nos ajudar a gente fazer algumas coisas.
+
+TodoList.addTodo()
+TodoList.addTodo() // Dá erro porque o método estático não enxerga o resto da classe
+TodoList.addTodo()
+TodoList.addTodo()
+
+O método então poderia ficar assim:
+
+ class Matematica{
+     static soma(a, b){ 
+        return a + b
+    }
+}
+
+console.log(Matematica.soma(1, 2));
+

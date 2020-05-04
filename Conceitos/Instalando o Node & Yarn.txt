@@ -1,0 +1,11 @@
+Instale o Node.js e verifique no terminal executando o código
+
+node -v
+
+A segunda dependência que vamos precisar é o yarn,
+bom, o yarn é um gerenciador de pacotes do JS,
+então ele vai ser utlizado para instalar ferramentas de outras pessoas ou de outras empresas dentro do nosso Projeto, utilizando essas ferramentas na nossa aplicação.
+
+Baixe  o instalador no site oficial deles e instale.
+
+

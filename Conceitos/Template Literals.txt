@@ -1,0 +1,8 @@
+Uma nova forma de colocar variáveis em strings no JS:
+
+const nome = 'Yasmim';
+const idade = 16;
+
+// console.log('Meu nome é ' + nome + ' e tenho ' + idade + ' anos.');
+
+console.log(`Meu nome é ${nome} e tenho ${idade} anos.`);

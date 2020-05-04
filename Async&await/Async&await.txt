@@ -1,0 +1,106 @@
+O async/await é uma nova forma de trabalharmos com a programação
+assíncrona dentro do Javascript. 
+
+Promises - Forma de realizarmos ações assíncronas. Muito utilizadas para
+fazermos requisiçõies a API, servidores back-end e assim por diante.
+
+Podemos fazer uma promise na mão:
+
+const MinhaPromise = () => new Promise((resolve, reject) => {
+    setTimeout(() => { resolve('Ok') }, 2000 )
+})
+
+MinhaPromise().then( response => console.log(response) ).catch(err => console.log(err) ))
+        
+
+E também podemos utlizar a nova forma do ES8:
+
+Mas antes precisamos instalar esta funcionalidade do async/await no nosso Babel,
+como é uma nova forma do ES8 ele não vem automaticamente. Enfim, precisamos instalar um
+novo plugin:
+
+yarn add @babel/plugin-transform-async-to-generator -D
+
+yarn add @babel/polyfill -D
+
+Vamos copiar a nossa primeira depência que instalamos do babel e colocarmos
+na nossa área de plugins do arquivo de configuração do babel o deixando assim:
+
+{
+    "presets": ["@babel/preset-env"],
+    "plugins": ["@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-async-to-generator"]
+}
+
+e a segunda colocamos no nosso arquivo de configuração do webpack.
+O entry trasnformamos num array, e passamos o @babel/polyfill como primeiro valor.
+Deixando-o assim:
+
+  entry: ["@babel/polyfill", "./src/main.js"],
+
+
+Então agora ao ínves de utlizarmos aquele modelo de cascata do .then, .catch utlizamos o
+await quantas vezes quisermos, e assim se tivermos vários awaitt, o próximo só vai executar
+quando o primeiro tiver acabado, etc.
+
+
+===========================================================
+const minhaPromise = () => new Promise((resolve, reject) => {
+    setTimeout(() => { resolve('Ok') }, 2000);
+});
+
+async function executaPromise(){ // Para utlizramos a nova forma do ES8 sempre tem que haver uma função por volta colocando o async primeiro.
+    const response = await minhaPromise() // Criamos um response assim como era o parâmetro do .then, e está variável recebe o await com a nossa Promise
+
+    console.log(response)
+}
+
+executaPromise();
+
+===========================================================
+
+const minhaPromise = () => new Promise((resolve, reject) => {
+    setTimeout(() => { resolve('Ok') }, 2000);
+});
+
+async function executaPromise(){ // Para utlizramos a nova forma do ES8 sempre tem que haver uma função por volta colocando o async primeiro.
+    console.log(await minhaPromise()) // O próximo só executa quando o primeiro tiver terminado e assim por diante
+    console.log(await minhaPromise())
+    console.log(await minhaPromise())
+}
+
+executaPromise();
+
+Para ter esse mesmo resultado sem utlizar esta sintaxe de async/await, teriámos que fazer:
+
+
+minhaPromise().then(response => console.log(response))
+minhaPromise().then(response => console.log(response))
+minhaPromise().then(response => console.log(response))
+
+Apartir do momento que definimos uma async function ela automaticamente vira uma Promise, então a gente
+pode esperar o resultado dela usando o executaPromise.then() e o
+await executaPromise não podemos usar porque o await só funciona dentro de uma função assíncrona.
+
+Também podemos transformas essa função assíncrona utlizando a arrow function:
+
+const minhaPromise = () => new Promise((resolve, reject) => {
+    setTimeout(() => { resolve('Ok') }, 2000);
+});
+
+/*async function executaPromise(){ // Para utlizramos a nova forma do ES8 sempre tem que haver uma função por volta colocando o async primeiro.
+    console.log(await minhaPromise()) // O próximo só executa quando o primeiro tiver terminado e assim por diante
+    console.log(await minhaPromise())
+    console.log(await minhaPromise())
+} */
+
+const executaPromise = async () => {
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+    console.log(await minhaPromise());
+}
+
+executaPromise();
+
+
+Então o async/await vai nos facilitar muito para trabalharmos com a programação assíncrona dentro do JS.

@@ -1,0 +1,24 @@
+funcoes.js:
+
+export const idade = 23;
+
+export default class Usuario{
+    static info(){
+        console.log('Apenas teste')
+    }
+}
+
+main.js:
+
+// MODÚLO 2 - DESAFIO 
+
+// EXERCÍCIO 1: 1.1, 1.2, 1.3
+
+ /* import ClasseUsuario from './funcoes';
+import { idade } from './funcoes'; */
+import ClasseUsuario, { idade as idadeUsuario } from './funcoes'
+
+
+ClasseUsuario.info()
+
+console.log(idadeUsuario);

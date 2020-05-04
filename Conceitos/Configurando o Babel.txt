@@ -1,0 +1,58 @@
+Então vamos começar configurando as dependências do nosso projeto:
+
+Vá na raiz do projeto e execute o comando:
+
+yarn init (Ele criará um arquivo package.json que guarda as informações do nosso projeto.)
+
+Agora instale as dependências do Babel:
+
+yarn add @babel/cli (Essa dependência vai permitir que a gente trabalhe com a interface de linha de comando do Babel, que seria fazer instalações pelo terminal, etc, assim como o yarn).
+
+yarn add @babel/preset-env
+
+Vemos que dois arquivos foram criados, o yarn.lock que é só uma forma de cach do yarn, não vamos precisar mexer.
+E também o node_modules, com várias e várias dependências do nosso projeto! Instalamos só duas, mas essas duas tem suas próprias dependências, etc.
+
+
+Se Vc for usar controle de versão tipo o git, essa é uma boa hora para criar o seu .gitignore.
+
+======= Configurando o Babel ========
+
+Crie um arquivo .babelrc e digite nele
+
+{
+    "presets": ["@babel/preset-env"]
+}
+
+O preset-env do Babel praticamente entende em qual ambiente estamos trabalhando e saberá se há a necessidade de converter o código ES6, ES7 para um mais antigo.
+
+Crie dois arquivos agora, um html e outro js, por exemplo: index.html, main.js
+
+Vamos ter que instalar mais um modúlo no nosso projeto:
+
+yarn add @babel/core
+
+Agora vamos criar mais uma propriedade no nosso package.json, então ele ficará assim ao final:
+
+{
+  "name": "curso_ES6_Rocketseat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5"
+  },
+  "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js" // Esse código está fazendo com que todo código que escrevermos em ES6, ES7, ES8 no nosso arquivo main.js seja convertido para um código que todos os navegadores entendam no bundle.js. 
+  }
+}
+
+E vamos executar o comando yarn dev para ver se funcionou.
+
+Depois vamos adicionar uma nova funcionalidade do babel, na nossa propriedade dev!!! então colocamos no final o hippen w:
+
+ "dev": "babel ./main.js -o ./bundle.js -w" // Esse -w vai monitorar as alterações no nosso arquivo main.js e automaticamente executar no bundle.js depois do yarn dev.
+
+Então vamos no nosso index.html criando a sintaxe básica do html, e adicionando por ultimo na tag script src o bundle.js

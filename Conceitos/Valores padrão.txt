@@ -1,0 +1,11 @@
+function soma(a = 3, b = 6){ // Então podemos colocar valores padrões nesses parâmetros para que isso não acontessa!
+    return a + b
+}
+
+console.log(soma(1)) // O que acontece se chamarmos essa função e passar só um parâmetro?
+
+console.log(soma()) // E se passarmos nenhum parâmetro??
+
+// Como podemos ver ele rteonra NaN ou seja, não é um número, ou número inexistente.
+
+const soma = (a = 3, b = 6) => a + b; // Em forma de Arrow Function

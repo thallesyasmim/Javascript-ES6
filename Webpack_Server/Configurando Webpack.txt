@@ -1,0 +1,57 @@
+O Webpack é como se fosse um serviço, que vai nos disponibilizar a
+possibilidade de trabalhar com vários arquivos JS na nosssa aplicação.
+e não só arquivos JS, como também imagens, JSON, etc.
+
+================== CONFIGURAÇÃO DO WEBPACK ======================
+
+Antes de instalarmos como uma dependência vamos até o nosso arquivo
+package.json.
+	Até agora estamos instalando tudo como dependências, mas
+essas dependências elas são necessárias somente no ambiente de 
+desenvolvimento, porque quando mandarmos este projeto pro ar só
+iremos mandar o arquivo bundle.js.
+
+	Então podemos mudar a propriedade "dependencies" para "devDependencies".
+
+Então para começar a gente executa este comando na raiz do porjeto:
+
+yarn add webpack webpack-cli -D 
+
+Crie o arquivo de configuração do webpack, webpack.config.js
+
+e digite esse código:
+
+mas antes instale a dependência do babel-loader, yarn add babel-loader -D (Para instalar como dependência)
+
+module.exports = {
+    entry: "./main.js", // Vai dizer qual é o nosso arquivo principal, que no caso é main.js, aonde a gente escreve o nosso código em ES6, ES7, ES8, etc.
+    output: { 
+        path: __dirname, // Vai dizer qual é o diretório do nosso arquivo, esse dirname é uma variável global.
+        filename: "./bundle.js"
+    },
+    module: {
+        rules: [ // Vai dizer como o arquivo vai se comportar quando o usuário querer importar novos arquivos JS.
+            {
+                test: /\.js$/, // expressão regular
+                exclude: /node_modules/, // Para que o Babel rode somente nos nossos arquivos e em nenhum do node_modules.
+                use: {
+                    loader: "babel-loader",
+                }
+            }
+        ],
+    },
+}
+
+
+Agora vamos executar o nosso webpack para saber se está funcionando, e como fazemos isso?
+
+Vamos no nosso arquivo package.json novamente, dentro do nosso script, na propriedade dev,
+e mudá-la:
+
+  "scripts": {
+    "dev": "webpack --mode=development -w"
+  }
+
+agora executamos o yarn dev para ver se deu certo.
+
+Então agora podemos usar a sintaxe de import e export graças ao webpack.

@@ -1,0 +1,47 @@
+Vamos utlizar a biblioteca axios que vai nos dar acesso a uma API,
+para a gente poder trabalhar com requisições assíncronas, protocolos
+HTTP, outras API's com servidores back-end por exemplo.
+Vamos acessar a API do Github utlizando o axios, 1°:
+
+yarn add axios // Dessa vez não como depêndencia
+
+E vamos utlizar o poder do async/await com o axios.
+
+Primeiramente importamos ele no arquivo JS:
+
+import axios from 'axios'; // Importação do axios
+
+class Api {
+    static async getUserInfo(username){ // Transformamos numa função assíncrona, agora nos disponiilizando o uso do await.
+        const response = await axios.get(`https://api.github.com/users/${username}`) // O await neste caso é devido ao fato da biblioteca do axios ser baseada em Promises, tendo a mesma sintaxe de .then & .catch, então podemos utlizar o await para facilitar a pegar a resposta caso a requisição dê certo.
+        // Fazendo a requisição na API do Github
+        console.log(response);
+    }
+}
+
+Api.getUserInfo('thallesyasmim'); 
+
+Quando utlizavamos a sintaxe de .then e .catch na mão, tinhamos o .then
+para caso desse certo e o .catch pra caso der errado.
+
+Mas e agora se o usuário passar um usuário inexistente do Github?
+aonde está o .catch para caso a requisição de erro?
+
+Utilizamos a sintaxe de try:
+
+import axios from 'axios'; // Importação do axios
+
+class Api {
+    static async getUserInfo(username){ // Transformamos numa função assíncrona, agora nos disponiilizando o uso do await.
+        try{
+           // Fazendo a requisição na API do Github
+            const response = await axios.get(`https://api.github.com/users/${username}`) // O await neste caso é devido ao fato da biblioteca do axios ser baseada em Promises, tendo a mesma sintaxe de .then & .catch, então podemos utlizar o await para facilitar a pegar a resposta caso a requisição dê certo.
+            console.log(response);
+
+        } catch(err){
+            console.warn('Erro na requisição.');
+        }
+    }
+}
+
+Api.getUserInfo('thallesyasmim15');

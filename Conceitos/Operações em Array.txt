@@ -1,0 +1,72 @@
+No ES6 nós temos algumas funcionalidades em cima dos vetores que conseguimos 
+percorrer, manipular eles, filtrar encontrar valores dentro de uma forma muito 
+menos verbosa.
+
+
+const arr = [1, 3, 4, 5, 8, 9] // VARIÁVEL DE EXEMPLO PARA TODAS AS FUNÇÕES
+
+
+1° Função que veremos é o map(), o map() serve para percorrer o vetor e retornar alguma coisa de dentro
+retornar uma nova informação.
+
+================= map() =========================
+
+const arr = [1, 3, 4, 5, 8, 9]
+
+const newArr = arr.map(function(item){ // Esse item corresponde a cada valor do vetor, [1, 3, 4, 5, 8, 9]
+    return item * 2 // Está percorrendo cada valor do arr e retornando para o nosso outro array duas vezes o valor.
+})
+
+console.log(newArr)
+
+
+Além disso poderiámos ter outro parâmetro dentro do map, que seria o nosso índice, a casa de cada valor.
+
+
+const arr = [1, 3, 4, 5, 8, 9]
+
+const newArr = arr.map(function(item, index){ // Esse item corresponde a cada valor do vetor, [1, 3, 4, 5, 8, 9] e o index a cada posição ou indice dos valores.
+    return item + index // Irá retornar para o nosso outro vetor o valor mais o índice dele.
+})
+
+console.log(newArr)
+
+
+================= Reduce ===================
+
+O reduce() é basicamente uma forma da gente consumir todo o nosso vetor e transformar num único, numa única informação, em uma única variável geralmente um número.
+
+
+const sum = arr.reduce(function(total, next){
+    return total + next
+})
+
+console.log(sum)
+
+/**
+ * O que está acontecendo nos parâmetros:
+ * 
+ * total primeiramente vai ser 0, e o next 1
+ * total segundamente vai ser 1, e o next 3
+ * total terceiramente vai ser 4, e o next 4
+ * e assim por diante...
+ */
+
+
+========= filter ============
+
+const filter = arr.filter(function(item){ // Está pegando cada valor do nosso arr
+    return item % 2 === 0; // Preciso retornar true se é para esse valor ir para o nosso vetor ou false se ele tem que ser filtrado, removido.  
+})
+
+
+console.log(filter)
+
+========== find =============
+
+const find = arr.find(function(item){ // Utilizado quando a gente quer verificar se existe alguma informação dentro do array ou se a gente consegue encontrar essa informção dentro do array 
+    return item === 4; // Também vai retornar um true ou false, ou seja, estamos tentando encotrar o valor 4 dentro do array
+})
+
+console.log(find) // ele vai retornar 4 pq ele conseguiu achar, então vai retornar exatamente o número.
+// Se procurarmos um número que não existe ele vai retornar false, consecutvamente no console.log mostrando undefined. 

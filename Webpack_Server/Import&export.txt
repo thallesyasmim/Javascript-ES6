@@ -1,0 +1,68 @@
+O que fizemos na aula passada foi exportar uma função do nosso arquivo
+funcoes.js e importar no nosso arquivo main.js
+
+Quando utlizamos este export em frente a uma função, classe, variável podemos
+importa-la em outro arquivo JS usando o import, abrindo chaves e colocando extaamente o nome daquela função,
+classe, variável e from o arquivo aonde ela está sendo exportada.
+
+funcoes.js:
+
+export function soma(a, b){
+    return a + b;
+}
+
+export function sub(a, b){
+    return a - b;
+}
+
+main.js:
+
+import { soma, sub } from './funcoes'; // Não precisamos colocar .js pq por padrão ele vai procurar o arquivo JS.
+
+console.log(soma(74,5))
+
+========================================
+
+Cada arquivo pode ter um export default, mas o que é?
+
+é o export que é por padrão, utlizado quando o arquivo JS tem só uma funcionalidade, exemplo:
+
+temos um arquivo soma.js, e podemos usar o export default function soma() {} nele.
+
+E no import não precisamos utlizar chaves, por exemplo:
+
+import soma from './soma';  
+
+==============================
+
+E o mais legal é que na importação não precisamos usar necessariamente o nome da função,
+classe, variável, podemos dar o nome que quisermos.
+
+E se quisermos reatribuir o nome utlizando a sintaxe de export puro, podemos fazer por exemplo:
+
+import { soma as somaFuncao, sub } from './funcoes';
+
+=================================
+
+E outra coisa que vale apena saber, é que num mesm,o arquivo podemos ter um export default e vários outros exports comuns.
+
+ficando a sintaxe de importação assim:
+
+import soma, { sub } from './funcoes';
+
+=================================
+
+Também se tivermos varias funções, por exemplo, uma de soma, outra subtração e outra de multiplicação.
+
+ao ínves de importarmos cada uma em uma variável separada, assim:
+
+import { soma, sub, multi } from './funcoes';
+
+Podemos importar todas elas, fazendo assim:
+
+import * as funcoes from '/funcoes';
+
+se dermos um console.log nessa variável funcoes, vemos que ela é um objeto que guarda todas as funções do nosso arquivo.
+
+então podemos utlizar funcoes.soma(1, 2), funcoes.sub(5, 6) por exemplo.
+

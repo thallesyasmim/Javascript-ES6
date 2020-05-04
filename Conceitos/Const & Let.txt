@@ -1,0 +1,29 @@
+============= Const ==============
+
+const a = 1; // O que difere a const de uma var comum? A constante não pode ter o seu valor reatribuido.
+
+// a = 3 Não podemos fazer isso!
+
+// Mas podemos mutar uma variável! Qual a diferença?
+
+const usuario = { nome: "Yasmim" }
+
+usuario.nome = "Cristina" // Isso é uma mutação, quando trabalhamos com o mesmo formato do objeto, porém a gente altera valores dentro desse objeto ou array
+
+===================================
+
+========== Variáveis de escopo =============
+
+function teste(x){ // O abre e fecha chaves é o que chamamos de escopo
+    let y = 2;
+
+    if(x > y){
+        let y = 4; // Mas isso podemos fazer, a reatribuição dela.
+
+        console.log(x, y)
+    }
+}
+
+// console.log(y)  Dará erro porque esse console.log não está no mesmo escopo da variável y.
+
+teste(60);

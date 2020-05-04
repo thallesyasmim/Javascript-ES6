@@ -1,0 +1,29 @@
+/**
+ * Sintaxe curta de objeto
+ *  Vamos supor que tenhamos uma variável para idade e outra para o nome e queremos
+ * coloca-las dentro de um objeto.
+ */
+
+ const nome = 'Yasmim';
+ const idade = 16;
+
+ const usuario = {
+     nome: nome,
+     idade: idade,
+     empresa: 'Rocketseat'
+ }
+
+Quando temos propriedade com  o mesmo nome dá variável podemos usar
+o conceito de sintaxe curta de objetos.
+
+
+ const nome = 'Yasmim';
+ const idade = 16;
+
+ const usuario = {
+     nome,
+     idade,
+     empresa: 'Rocketseat'
+ }
+
+ console.log(usuario)

@@ -1,0 +1,72 @@
+Primeiramente vamos dar uma organizada nos nossos arquivos criando duas pastas:
+
+Uma public, e outra src. Qual a diferença de cada uma delas?
+
+É que a pasta src vão ficar todos os nossos arquivos JS.
+
+E no public vamos colocar os arquivos que não precisam ser monitorados pelo
+webpack. Ou seja, vamos colocar o nosso arquiv html lá e podemos
+apagar por enquanto o nosso arquivo bundle.js porque vamos gerar um novo.
+
+Mas agora precisamos fazer algumas configurações no nosso arquivo de configuração do webpack.
+
+Como no entry, ja que o main não está mais na raiz e o nosso
+output não está mais na raiz, então no __dirname colocamos + '/public'
+
+Depois disso vamos instalar o webpack dev server usando este comando:
+
+yarn add webpack-dev-server -D
+
+Vamos crirar um novo objeto no nosso arquivo de configuração do webpack, o devServer,
+que vai ter como propriedade o contentBase, que é o caminho da onde ele deve abrir o nosso servidor, que no nosso caso é o index.html
+então colocamos o __dirname que é a raiz do projeto + '/public'
+
+deixando nosso arquivo assim:
+
+module.exports = {
+    entry: "./src/main.js", // Vai dizer qual é o nosso arquivo principal, que no caso é main.js, aonde a gente escreve o nosso código em ES6, ES7, ES8, etc.
+    output: { 
+        path: __dirname + '/public', // Vai dizer qual é o diretório do nosso arquivo, esse dirname é uma variável global.
+        filename: "./bundle.js"
+    },
+    devServer: {
+        contentBase: __dirname + '/public' // Vai dizer qual é o caminho do nosso servidor
+    },
+    module: {
+        rules: [ // Vai dizer como o arquivo vai se comportar quando o usuário querer importar novos arquivos JS.
+            {
+                test: /\.js$/, // expressão regular
+                exclude: /node_modules/, // Para que o Babel rode somente nos nossos arquivos e em nenhum do node_modules.
+                use: {
+                    loader: "babel-loader",
+                }
+            }
+        ],
+    },
+}
+
+Agora vamos no nosso package.json e alterar o nosso script para webpack-dev-server tirando o hippen w no final.
+
+ficando assim:
+
+  "scripts": {
+    "dev": "webpack-dev-server --mode=development"
+  }
+}
+
+E assim que exercutarmos o yarn dev ele vai criar um servidor para gente, podendo ser acessado pelo browser.
+
+e o nosso arquivo bundle.js?? o webpack-dev-server ele ja cria automaticamente esse arquivo para nós, não o vemos fisicamente mas ele está ali.
+
+E se formos mandar esse projeto para o ar, e o meu arquivo bundle.js?
+
+Bom, neste caso podemos ir no package.json, ir na área de scripts e criar mais uma propriedade para área de produção,
+o "build": "webpack --mode=production"
+
+e depois rodar yarn build no cmd e ele vai mostrar/'criar' o nosso bundle.js
+
+e agora sim podemos colocar o nosso projeto no ar
+
+mas o webpack-dev-server serve muito bem para trabalharmos offline.
+
+O webpack-dev-server vai monitorar as alterações na nossa pasta src e vai automaticamente dar o refresh, o que vai nos ajudar muito para trabalhar com o ES6.

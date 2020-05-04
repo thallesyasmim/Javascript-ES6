@@ -1,0 +1,57 @@
+// MODÚLO 03
+
+/* A - Função delay aciona o await após 1 segundo.
+
+const delay = () => new Promise(resolve => setTimeout(resolve, 1000));
+
+async function umPorSegundo(){
+    await delay();
+    console.log('1 seg');
+
+    await delay();
+    console.log('2 seg');
+
+    await delay();
+    console.log('3 seg');
+}
+
+umPorSegundo(); */
+
+import axios from 'axios';
+
+/* async function getUserFromGithub(username){
+    try{
+        const response = await axios.get(`https://api.github.com/users/${username}`);
+        console.log(response.data);
+    } catch(err){
+        console.warn('Usuário não existe');
+    }
+}
+
+getUserFromGithub('thallesyasmim');
+getUserFromGithub('thallesyasmim31082018'); */
+
+/* class Github{
+    static async getRepositories(repo){
+        try{
+            const response = await axios.get(`https://api.github.com/repos/${repo}`);
+            console.log(response.data);
+        } catch(err){
+            console.warn('Repositório não existente.');
+        }
+    }
+}
+
+Github.getRepositories('thallesyasmim/Be-The-Hero');
+Github.getRepositories('Be-The-Heronoi'); */
+
+const buscaUsuario = async username => {
+    try{
+        const response = await axios.get(`https://api.github.com/users/${username}`);
+        console.log(response.data);
+    } catch(err){
+        console.warn('Usuário não existe');
+    }
+}
+
+buscaUsuario('thallesyasmim');

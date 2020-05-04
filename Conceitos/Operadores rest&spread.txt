@@ -1,0 +1,100 @@
+Antes de utlizarmos os operadores rest/spread precisamos instalar eles em forma de plugins
+porque eles ainda não foram acoplados a versão principal do Babel.
+
+Comando:
+
+yarn add @babel/plugin-proposal-object-rest-spread
+
+Logo após isso vamos no nosso arquivo de configuração do Babel e adicionamos os plugins com esse pacote.
+
+Fiacndo o nosso arquivo de configuração do Babel assim:
+
+{
+    "presets": ["@babel/preset-env"],
+    "plugins": ["@babel/plugin-proposal-object-rest-spread"]
+}
+
+==================== REST =========================
+
+/**
+ * REST - Serve para duas aplicações
+ * o REST serve para pegarmos o resto das propriedades
+ * Mas o que é esse resto das propriedades? Vamos supor que temos um objeto...
+ */
+
+ const usuario = {
+     nome: 'Diego',
+     idade: 25,
+     empresa: 'Rocketseat'
+ }
+
+ const { nome, ...resto } = usuario; // Colocamos as reticências e o nome da variável que queremos que armazene o resto (Nauqel caso é resto), e de qual objeto vamos receber.
+
+ console.log(nome)
+console.log(resto)
+
+E podemos utlizar também este operador em arrays!
+
+// Podemos utlizar este operador REST em vetores
+
+const numeros = [1, 2, 3, 4, 7]
+
+const [ a, b, ...c ] = numeros; // Estamos dizendo que queremos que o primeiro item do vetor seja armazenado na variável a, o segundo na variável b e o resto na variável c.
+
+console.log(a, b, c)
+
+E também podemos utlizar em parâmetros de funções:
+
+function soma(a, b){ // Se a gente quiser ter um terceiro parâmetro vamos ter que colocar
+    return a + b
+}
+
+console.log(soma(1, 2))
+
+function soma(a, b, c){ // Se a gente quiser ter um terceiro parâmetro vamos ter que colocar
+    return a + b + c;
+}
+
+console.log(soma(1, 2, 5))
+
+function soma(...params){ 
+    console.log(params) // E como podemos ver ele está retornando um array dos valores passados quando chamamos a função.
+}
+
+soma(1, 5, 6, 4)
+
+function soma(...params){ 
+    return params.reduce((total, next) => total + next)
+}
+
+console.log(soma(1, 5, 6, 4))
+
+===================== SPREAD =====================
+
+/**
+ * SPREAD
+ * Tem a função de propagar, repassar as informações de um objeto ou array para outra estrutura de dados
+ */
+
+const num1 = [1, 2, 3]
+const num2 = [4, 5, 6]
+
+// Se quisessemos juntar esses dois valores dos arrays poderiamos fazer assim:
+
+const num3 = [ ...num1, ...num2] // O operador SPREAD usado neste escopo está pegando todos os valores do primeiro array e depois do segundo, fazendo com que o terceiro tenha os valores dos dois juntos.
+
+console.log(num3)
+
+// Quais outras utlizações dooperador SPREAD??
+
+// Vamos pensar que queremos pegar todas as propriedades de um objeto mas só queremos trocar uma delas:
+
+const pessoamaislinda = {
+    nome: 'Yasmim',
+    idade: 16,
+    beleza: 'Inigualável'
+}
+
+const perfeicao = { ...pessoamaislinda, nome: 'Yasmim Cristina' } // Estamos pegando todos os valores daquele objeto e sobrepondo o objeto nome, como não pode existir duas propriedades com o mesmo nome, então é como se ele estivesse reatribuindo.
+
+console.log(perfeicao)

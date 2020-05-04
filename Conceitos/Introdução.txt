@@ -1,0 +1,37 @@
+ES6+ - A sigla ES significa ECMAScript, e o
+6 corresponde a versão +1, ou seja, o ES6+
+foi lançado no ano de 2015, o ES7+ 2016, etc.
+
+E geralmente saem um conjunto de regras todo 
+o ano. Basicamente o ECMAScript é quem decide
+ou quem formúla as novas funcionalidades da linguagem Javascript.
+
+E essas regras são adicionadas nesses pacotes que conhecemos como ES6+, ES7+, e assim por diante.
+
+Bom, se você conhece o JS básico antes do ES6+
+entenda que depois do ES6+ são duas linguagens completamente diferentes, claro que a sintaxe
+é a mesma do JS, mas tem muitas novas funcionalidades que foram adicionadas com o ES6+, ES7+ e o ES8+.
+
+========== Babel ==========
+
+Como o Javascript avança muito rápido, e os navegadores são um pouco lentos para acompanhar essas novas diretrizes,
+principalmente quando a questão é CSS e o JS. Então eles podem não entender algumas funcionalidades do ES6, ES7, ES8+.
+
+O Babel ele então pega esses códigos que escrevemos nas novas versões do ECMAScript
+e converte para um código que todos os navegadores entendam.
+
+============================
+
+Então para entendermos esse ES6, ES7 ou ES8, eles não são novas funcionalidades
+que eram impossíveis de se fazer antes, mas são novas formas de se escrever o código Javascript.
+
+
+Algumas funcionalidades que vamos ver nesse curso:
+
+- Webpack
+- Classes
+- Arrow Functions
+- Desestruturação
+- Rest/spread
+- Import/export
+- Async/await
