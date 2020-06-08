@@ -1,7 +1,7 @@
-# Javascript-ES6
+<h4># Javascript-ES6</h4>
 
 <h1 align="center">
- Curso de Javascript ES6+ pela plataforma da Rocketseat. 🚀
+ Curso de JavaScript ES6+ pela plataforma da Rocketseat. 🚀
 </h1>
 
 <h2>🖥 Tecnologias utilizadas:</h2>
