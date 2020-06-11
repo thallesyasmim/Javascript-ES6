@@ -1,5 +1,3 @@
-<h4># Javascript-ES6</h4>
-
 <h1 align="center">
  Curso de JavaScript ES6+ pela plataforma da Rocketseat. 🚀
 </h1>
